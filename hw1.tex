@@ -1,0 +1,262 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+
+
+\documentclass{article}
+\usepackage{mathtools}  % loads »amamsth«
+\usepackage{amssymb}
+\usepackage{dsfont}
+
+\title{Assignment 1}
+\author{Amit Wolfenfeld}
+\date{17 November 2013}
+
+
+\begin{document}
+\maketitle
+
+\section*{Question 1}
+First let us define the payoff matrix:
+\\
+
+$$ U = \begin{pmatrix}
+
+1,1	& 1,2 & 1,3  & \dots 1,49 & 1,50 & 1,51  & \dots   &  1,98	& 1,99 & 1,99  \\
+
+2,1	& 2,2 & 2,3  & \dots 2,49 & 2,50 & 2,51  & \dots   &  2,98	& 2,98 & 2,98  \\
+
+3,1	& 1,2 & 1,3  & \dots 3,49 & 3,50 & 3,51  & \dots   &  3,97	& 3,97 & 3,97  \\
+
+\vdots  & \dots & \dots & \ddots & \vdots & \dots & \dots & \dots & \dots \\
+
+49,1	& 49,2 & 49,3  & \dots 49,49 & 49,50 & 49,51  & \dots   &  49,51	& 49,51 &
+49,51
+\\
+
+50,1	& 50,2 & 50,3  & \dots 50,49 & 50,50 & 50,50  & \dots   &  50,50	& 50,50 &
+50,50
+\\
+
+51,1	& 51,2 & 51,3  & \dots 51,49 & 50,50 & 50,50  & \dots   &  51,49	& 51,49 &
+51,49
+\\
+
+\vdots  & \dots & \dots & \dots & \vdots & \dots & \ddots & \dots & \dots \\
+
+98,1	& 98,2 & 97,3  & \dots 51,49 & 50,50 & 49,51  & \dots    & 50,50	& 98,2 &
+98,2
+\\
+
+99,1	& 98,2 & 97,3  & \dots 51,49 & 50,50 & 49,51  & \dots   & 2,98	& 50,50 &
+99,1
+\\
+
+99,1	& 98,2 & 97,3  & \dots 51,49 & 50,50 & 49,51  & \dots   &  2,98	& 1,99 &
+50,50
+\\
+
+\end{pmatrix}
+$$ 
+
+Let us start with Player 1, It is obvious that row 2 dominates row 1, hence we
+can cross out row 1. It is also obvious that row 3 dominates row 2, hence we can
+cross out that one as well. We can continue with this till row 50 which
+dominates row 49. How ever row 51 does not dominated row 50.
+We can do the same for Player 2 with the columns till we reach a sub matrix of
+51 by 51.\\
+
+%In this new game row 51 weakly dominates row 50 so we can cross it out. Same
+%for collumn 51 and 50. At this point we are left with a subgame of 50 by 50. \\
+
+%In this new game row 51 weakly dominates row 100 so we can cross it 49 by 49.
+%\\
+
+%In this new game row 51 weakly dominates row 99 so we can cross it out. Same
+%for collumn 51 and 99. At this point we are left with a subgame of 48 by 48.
+%\\
+
+At this point we don't have any dominating strategies so we will look for the
+best action.\\
+If player 1 chooses 100 player 2 best action is 99. If player 1 chooses 99
+player 2 best action is 98 and so meaning if player 1 choose $n$ player 2 best
+action would be $n-1$, this holds for $ 51 \leq n \leq 100$. the same for the
+player 2, for any action $n$ player 1 best action is $n-1$ for $ 51 \leq n \leq
+100$. From this we find that the only NE that are relevant in the 50 by 50 game
+is player one chooses 51 and player 2 chooses 51. Now let have a look at what
+happens if player 1 chooses 50, player 2 best action will be any action (they
+yield 50) and the other way around. This gives us that another NE is if player 1
+chooses 50 and player 2 chooses 50.
+
+To conclude, the NE's are $(50,50)$, $(51,51)$.
+
+
+\section*{Question 2}
+
+Lets consider a direct auction where all the buyers including  the seller
+(auctioneer) bid.  The winning rule is that the highest bid wins, and the
+payment rule is that the highest bid pays the second highest bid (same as in the second price
+auction). 
+\\
+The difference between this auction and the second price auction is
+that if the highest bid belongs to the seller, non of the buyers will get the
+goods. 
+\\
+Lets prove that being truthful is a weakly dominant strategy:
+Suppose the for buyer $i$ value is $v_i$,  and he considers biding $b_i>v_i$ or
+$b_i<v_i$.
+Lets denote the highest bid $\hat{b}$ of the other players including the
+auctioneer/seller.
+\\
+\\
+There are 6 possible outcomes:
+\\
+$b_i>v_i>\hat{b}$: The buyer will get the goods, the profit is $v_i-\hat{b}$, 
+and could have got the same result bidding $b_i=v_i$.
+\\
+$v_i>b_i>\hat{b}$:The buyer will get the goods, the profit is $v_i-\hat{b}$,
+and could have got the same result bidding $b_i=v_i$.
+\\
+$b_i>\hat{b}>v_i$: The buyer gets the goods but the the utility is negative,
+could have done better if he had bid $b_i=v_i$.
+\\
+$v_i>\hat{b}>b_i$: The buyer did not get the goods and could have done better if
+he had bid $v_i$ (would get a utility of $v_i-\hat{b}$ instead of 0)
+\\
+$\hat{b}>v_i>b_i$: The buyer did not get the goods, would  have done the same if
+had bid $v_i$.
+\\
+$\hat{b}>b_i>v_i$: The buyer did not get the goods, would  have done the same if
+had bid $v_i$.
+\\
+\\
+To conclude the player does better if he bids his actual value $v_i$ then to bid
+higher or lower. Till now we referred to the auctioneer as a player, and this is true unless his value is
+the highest, when this occurs (the seller has the highest bid) he gets the goods
+and no other player, so this does not affect the weakly dominating strategy of
+bidding truthfully. This type of auction satisfies all the demands and disputes
+the claim.
+
+\section*{Question 3}
+
+First let us define the utility function
+
+$\begin{matrix} u(v_i,b_i) = \left\{ \begin{array}{ll}
+         v_i-b_i & \mbox{if $b_i>max\{b_j\}$};\\
+         \frac{v_i-b_i}{k} & \mbox{if k ties};\\
+        0 & \mbox{else}\end{array} \right.
+        
+ \end{matrix}  $
+
+We assume any $v_i$ is drawn from $f$ and has a CDF of $F$ and is $iid$.
+\\
+We also assume that the $b_i$ is a function of $v_i$ and that all the player use
+the same policy to maximize their gain. Meaning $b_i(v) = b_j(v)$ (for the
+same $v$).\\
+
+The player wishes to maximize his gain hence he will play $b^*(v)$ that
+maximizes the following:
+
+$$Pr(win|b^*(v))(v-b^*(v)) = Pr(b^*(v)>\max\{b_j(v_j)\})(v-b^*(v))$$
+
+Because of the $iid$ assumption we can say
+
+$$\Pi\{Pr(b^*(v)>b_j(v_j)\}(v-b^*(v))=\{Pr(b^*(v)>b(v))\}^{n-1}(v-b^*(v))$$
+
+We will assume that $b(v)$ is an a non-decreasing function in $v$ and we get  
+
+$$Pr(win|b^*(v))(v-b^*(v)) = \{F(b^{-1}(b^*(v)))\}^{n-1}(v-b^*(v))$$
+
+Lets  derive and compare to zero (assuming $F'=f$):
+
+$$\frac{(n-1)f(b^{-1}(b^*(v)))\{F(b^{-1}(b^*(v)))\}^{n-2}}{b'(b^{-1}(b^*(v))}(v-b^*(v))
+- \{F(b^{-1}(b^*(v)))\}^{n-1} = 0$$
+
+We are looking for the equilibrium and hence $b^*(v)=b(v)$ so we can say the
+following: 
+
+$$\frac{F^{n-1}(v)}{b'(v)}(v-b(v))-F^{n-1}(v) $$
+Integration by parts will give us:
+
+$$b^*(v) = v-\frac{\int_0^v F^{n-1}(x)dx}{F^{n-1}(v)}$$
+
+Now we need to use the CDF that is given 
+
+
+
+$\begin{matrix} F^{n-1}(x) = \left\{ \begin{array}{ll}
+         0 & \mbox{if $v<a$};\\
+         (\frac{x-a}{b-a})^{n-1} & \mbox{if $a\leq x \leq b$};\\
+        1 & \mbox{else}\end{array} \right.
+        
+ \end{matrix}  $
+
+And after a bit of calculus we get:
+
+For any $v$ that satisfies $a\leq v \leq b$ we get
+
+$$ \int_0^v F^{n-1}(x)dx=\int_a^v F^{n-1}(x)dx$$
+
+
+
+$$
+\frac{(b-a)}{n}(\frac{v-a}{b-a})^{n}-\frac{(b-a)}{n}(\frac{a-a}{b-a})^{n} =
+\frac{(b-a)}{n}(\frac{v-a}{b-a})^{n} = $$
+$$
+=\frac{1}{n}\frac{(v-a)^n}{(b-a)^{n-1}}
+$$
+
+$$
+\frac{\int_0^v
+F^{n-1}(x)dx}{F^{n-1}(v)}=\frac{(v-a)^{n}}{n(b-a)^{n-1}} \cdot
+(\frac{b-a}{v-a})^{n-1} = \frac{v-a}{n}$$
+\\
+
+And we finally get:
+
+$$b^*(v) = v-\frac{v-a}{n}=\frac{(n-1)v+a}{n}$$
+
+Lets make a quick sanity check with $a=0$ like we have seen in class:
+
+$$b^*(v) =\frac{(n-1)}{n}v
+$$
+
+yey!
+
+
+\section*{Question 4}
+In this question the parameters are $n=3$, $a=5$, $b=10$, $v=8$. we get 
+
+$$b^*(v) =\frac{(n-1)v+a}{n}=\frac{(3-1)8+5}{3}=\frac{21}{3}=7$$
+
+Now let us calculate the expected utility:
+
+$$ \mathbb{E}_{v_2 \sim U[5,10],v_3 \sim U[5,10]} \left[ v_1-b_1 \right]$$
+
+$$ = (v_1-b_1)\int_{5}^{10}\int_{5}^{10}
+\mathds{P}(b_1>\frac{2 v_2 + 5}{3},b_1>\frac{2 v_2 + 5}{3})dv_2 dv_3$$
+
+Now lets calculate the the expected utility for the different bids. 
+\\
+Lets start witht the equilibrium $b_1=7$:
+$$  (8-7)\int_{5}^{10}\int_{5}^{10}
+\mathds{P}(7>\frac{2 v_2 + 5}{3})\mathds{P}(7>\frac{2 v_2 + 5}{3})dv_2 dv_3$$
+$$
+=\int_{5}^{10}\mathds{P}(v_2<8)\int_{5}^{10}\mathds{P}(v_3<8)
+=\frac{3}{5}\frac{3}{5} = \frac{9}{25} $$
+\\
+Now with $b_1=6$
+
+$$  (8-6)\int_{5}^{10}\int_{5}^{10}
+\mathds{P}(6>\frac{2 v_2 + 5}{3})\mathds{P}(6>\frac{2 v_2 + 5}{3})dv_2 dv_3$$
+$$
+=2\int_{5}^{10}\mathds{P}(v_2<6.5)\int_{5}^{10}\mathds{P}(v_3<6.5)
+=2\frac{3}{10}\frac{3}{10} = 2 \frac{9}{100} = \frac{9}{50} $$
+
+And now with $b_1 = 8$
+
+$$  (8-8)\int_{5}^{10}\int_{5}^{10}
+\mathds{P}(8>\frac{2 v_2 + 5}{3})\mathds{P}(8>\frac{2 v_2 + 5}{3})dv_2 dv_3 =0$$
+
+It is clear that $b_1=7$ is the best bid.
+
+\end{document}
